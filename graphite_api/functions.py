@@ -18,6 +18,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 from functools import partial
 from operator import is_not, itemgetter
+from itertools import izip_longest
 
 import math
 import re
@@ -187,7 +188,7 @@ def sumSeries(requestContext, *seriesLists):
         return []
     seriesList, start, end, step = normalize(seriesLists)
     name = "sumSeries(%s)" % formatPathExpressions(seriesList)
-    values = (safeSum(row) for row in zip(*seriesList))
+    values = (safeSum(row) for row in izip_longest(*seriesList))
     series = TimeSeries(name, start, end, step, values)
     series.pathExpression = name
     return [series]
