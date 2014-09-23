@@ -5,3 +5,9 @@ htmlcov
 docs/_build
 dist
 build
+.vagrant
+Vagrantfile
+manifests
+modules
+*.pyc
+*_log
